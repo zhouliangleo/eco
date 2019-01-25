@@ -1,0 +1,478 @@
+------------------------------------
+Environment Versions:
+- Python: 3.6.7 |Anaconda, Inc.| (default, Oct 23 2018, 19:16:44) 
+[GCC 7.3.0]
+- PyTorch: 0.4.0
+- TorchVison: 0.2.1
+------------------------------------
+ECO Configurations:
+- dataset: actev
+- modality: RGB
+- train_list: /home/leo/data/nactev/list/2018actev_train_file.txt
+- val_list: /home/leo/data/nactev/list/2018actev_val_file.txt
+- arch: ECO
+- num_segments: 48
+- consensus_type: identity
+- pretrained_parts: finetune
+- k: 3
+- dropout: 0.3
+- loss_type: nll
+- epochs: 40
+- batch_size: 5
+- iter_size: 4
+- lr: 0.001
+- lr_steps: [15.0, 30.0]
+- momentum: 0.9
+- weight_decay: 0.0005
+- clip_gradient: 50.0
+- no_partialbn: True
+- nesterov: True
+- print_freq: 20
+- eval_freq: 1
+- workers: 5
+- resume: net_runs/ECO_48_finetune
+- evaluate: False
+- snapshot_pref: net_runs/ECO_48_finetune/eco_lite
+- start_epoch: 0
+- gpus: None
+- flow_prefix: 
+- rgb_prefix: 
+------------------------------------
+
+Initializing TSN with base model: ECO.
+TSN Configurations:
+    input_modality:     RGB
+    num_segments:       48
+    new_length:         1
+    consensus_module:   identity
+    dropout_ratio:      0.3
+        
+pretrained_parts:  finetune
+=> loading model 'models/eco_lite_rgb_16F_kinetics_v2.pth.tar'
+**************************************************
+Start finetuning ..
+un_init_dict_keys:  ['module.base_model.res3a_2.bias', 'module.base_model.res3b_1.bias', 'module.base_model.res3b_2.bias', 'module.base_model.res4a_1.bias', 'module.base_model.res4a_2.bias', 'module.base_model.res4a_down.bias', 'module.base_model.res4b_1.bias', 'module.base_model.res4b_2.bias', 'module.base_model.res5a_1.bias', 'module.base_model.res5a_2.bias', 'module.base_model.res5a_down.bias', 'module.base_model.res5b_1.bias', 'module.base_model.res5b_2.bias', 'module.new_fc.weight', 'module.new_fc.bias']
+
+------------------------------------
+module.base_model.res3a_2.bias init as: 0
+module.base_model.res3b_1.bias init as: 0
+module.base_model.res3b_2.bias init as: 0
+module.base_model.res4a_1.bias init as: 0
+module.base_model.res4a_2.bias init as: 0
+module.base_model.res4a_down.bias init as: 0
+module.base_model.res4b_1.bias init as: 0
+module.base_model.res4b_2.bias init as: 0
+module.base_model.res5a_1.bias init as: 0
+module.base_model.res5a_2.bias init as: 0
+module.base_model.res5a_down.bias init as: 0
+module.base_model.res5b_1.bias init as: 0
+module.base_model.res5b_2.bias init as: 0
+module.new_fc.weight init as: xavier
+module.new_fc.bias init as: 0
+------------------------------------
+=> no checkpoint found at 'net_runs/ECO_48_finetune'
+group: first_3d_conv_weight has 1 params, lr_mult: 1, decay_mult: 1
+group: first_3d_conv_bias has 1 params, lr_mult: 2, decay_mult: 0
+group: normal_weight has 32 params, lr_mult: 1, decay_mult: 1
+group: normal_bias has 32 params, lr_mult: 2, decay_mult: 0
+group: BN scale/shift has 60 params, lr_mult: 1, decay_mult: 0
+No BN layer Freezing.
+Epoch: [0][0/73], lr: 0.00100	Time 11.126 (11.126)	Data 1.574 (1.574)	Loss 2.2082 (2.2082)	Prec@1 20.000 (20.000)	Prec@2 40.000 (40.000)
+Epoch: [0][20/73], lr: 0.00100	Time 1.914 (1.641)	Data 0.000 (0.075)	Loss 1.6489 (1.3572)	Prec@1 60.000 (42.857)	Prec@2 60.000 (76.190)
+Epoch: [0][40/73], lr: 0.00100	Time 1.947 (1.424)	Data 0.001 (0.039)	Loss 1.3916 (1.1606)	Prec@1 60.000 (56.098)	Prec@2 60.000 (79.024)
+Epoch: [0][60/73], lr: 0.00100	Time 1.909 (1.344)	Data 0.000 (0.026)	Loss 0.6888 (1.1709)	Prec@1 60.000 (58.033)	Prec@2 100.000 (81.967)
+No BN layer Freezing.
+Test: [0/56]	Time 3.147 (3.147)	Loss 0.1892 (0.1892)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.475 (0.571)	Loss 0.0980 (0.2297)	Prec@1 100.000 (94.286)	Prec@2 100.000 (99.048)
+Test: [40/56]	Time 0.495 (0.504)	Loss 0.1127 (0.2591)	Prec@1 100.000 (92.195)	Prec@2 100.000 (98.049)
+Testing Results: Prec@1 70.545 Prec@5 88.000 Loss 1.03757
+No BN layer Freezing.
+Epoch: [1][0/73], lr: 0.00100	Time 6.396 (6.396)	Data 5.280 (5.280)	Loss 2.7209 (2.7209)	Prec@1 40.000 (40.000)	Prec@2 40.000 (40.000)
+Epoch: [1][20/73], lr: 0.00100	Time 1.786 (1.435)	Data 0.000 (0.252)	Loss 0.3236 (0.9715)	Prec@1 100.000 (68.571)	Prec@2 100.000 (83.810)
+Epoch: [1][40/73], lr: 0.00100	Time 1.997 (1.294)	Data 0.000 (0.129)	Loss 1.3020 (0.9441)	Prec@1 60.000 (65.366)	Prec@2 80.000 (82.927)
+Epoch: [1][60/73], lr: 0.00100	Time 1.984 (1.249)	Data 0.000 (0.087)	Loss 0.9930 (0.9365)	Prec@1 40.000 (64.918)	Prec@2 80.000 (84.918)
+No BN layer Freezing.
+Test: [0/56]	Time 2.236 (2.236)	Loss 0.2520 (0.2520)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.652 (0.553)	Loss 0.5458 (0.3882)	Prec@1 100.000 (89.524)	Prec@2 100.000 (99.048)
+Test: [40/56]	Time 0.384 (0.474)	Loss 0.2487 (0.4545)	Prec@1 100.000 (86.829)	Prec@2 100.000 (95.610)
+Testing Results: Prec@1 68.000 Prec@5 85.818 Loss 0.95007
+No BN layer Freezing.
+Epoch: [2][0/73], lr: 0.00100	Time 4.935 (4.935)	Data 3.583 (3.583)	Loss 1.1920 (1.1920)	Prec@1 60.000 (60.000)	Prec@2 60.000 (60.000)
+Epoch: [2][20/73], lr: 0.00100	Time 1.855 (1.354)	Data 0.000 (0.171)	Loss 0.7584 (1.0788)	Prec@1 60.000 (61.905)	Prec@2 100.000 (85.714)
+Epoch: [2][40/73], lr: 0.00100	Time 1.916 (1.254)	Data 0.000 (0.088)	Loss 1.1625 (1.0406)	Prec@1 60.000 (61.951)	Prec@2 80.000 (84.878)
+Epoch: [2][60/73], lr: 0.00100	Time 1.881 (1.221)	Data 0.000 (0.059)	Loss 1.1064 (1.0010)	Prec@1 60.000 (64.262)	Prec@2 100.000 (85.246)
+No BN layer Freezing.
+Test: [0/56]	Time 2.627 (2.627)	Loss 0.3829 (0.3829)	Prec@1 80.000 (80.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.419 (0.552)	Loss 0.4555 (0.6366)	Prec@1 80.000 (80.000)	Prec@2 100.000 (95.238)
+Test: [40/56]	Time 0.497 (0.479)	Loss 0.4054 (0.8778)	Prec@1 80.000 (73.659)	Prec@2 100.000 (90.732)
+Testing Results: Prec@1 61.455 Prec@5 83.636 Loss 1.16256
+No BN layer Freezing.
+Epoch: [3][0/73], lr: 0.00100	Time 4.180 (4.180)	Data 2.911 (2.911)	Loss 0.8767 (0.8767)	Prec@1 60.000 (60.000)	Prec@2 80.000 (80.000)
+Epoch: [3][20/73], lr: 0.00100	Time 1.856 (1.281)	Data 0.000 (0.146)	Loss 0.6019 (0.8701)	Prec@1 60.000 (70.476)	Prec@2 100.000 (86.667)
+Epoch: [3][40/73], lr: 0.00100	Time 1.931 (1.219)	Data 0.000 (0.075)	Loss 0.6029 (0.8852)	Prec@1 60.000 (68.293)	Prec@2 100.000 (87.317)
+Epoch: [3][60/73], lr: 0.00100	Time 1.871 (1.197)	Data 0.000 (0.050)	Loss 0.4989 (0.8740)	Prec@1 80.000 (67.869)	Prec@2 100.000 (87.213)
+No BN layer Freezing.
+Test: [0/56]	Time 2.007 (2.007)	Loss 0.2344 (0.2344)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.550 (0.530)	Loss 0.3126 (0.2808)	Prec@1 80.000 (88.571)	Prec@2 100.000 (100.000)
+Test: [40/56]	Time 0.381 (0.467)	Loss 0.2155 (0.3755)	Prec@1 100.000 (86.829)	Prec@2 100.000 (97.073)
+Testing Results: Prec@1 68.364 Prec@5 87.636 Loss 0.83244
+No BN layer Freezing.
+Epoch: [4][0/73], lr: 0.00100	Time 4.500 (4.500)	Data 3.221 (3.221)	Loss 0.3711 (0.3711)	Prec@1 80.000 (80.000)	Prec@2 100.000 (100.000)
+Epoch: [4][20/73], lr: 0.00100	Time 1.933 (1.327)	Data 0.000 (0.154)	Loss 0.4170 (0.9271)	Prec@1 80.000 (69.524)	Prec@2 100.000 (86.667)
+Epoch: [4][40/73], lr: 0.00100	Time 1.837 (1.244)	Data 0.000 (0.079)	Loss 0.8691 (0.9656)	Prec@1 40.000 (64.390)	Prec@2 80.000 (84.390)
+Epoch: [4][60/73], lr: 0.00100	Time 1.878 (1.217)	Data 0.000 (0.053)	Loss 0.6936 (0.9102)	Prec@1 60.000 (66.885)	Prec@2 100.000 (85.902)
+No BN layer Freezing.
+Test: [0/56]	Time 2.464 (2.464)	Loss 0.2678 (0.2678)	Prec@1 80.000 (80.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.437 (0.505)	Loss 0.4578 (0.4217)	Prec@1 100.000 (83.810)	Prec@2 100.000 (98.095)
+Test: [40/56]	Time 0.417 (0.454)	Loss 0.1178 (0.4464)	Prec@1 100.000 (83.902)	Prec@2 100.000 (95.610)
+Testing Results: Prec@1 66.909 Prec@5 87.273 Loss 0.87606
+No BN layer Freezing.
+Epoch: [5][0/73], lr: 0.00100	Time 5.289 (5.289)	Data 4.112 (4.112)	Loss 0.4342 (0.4342)	Prec@1 80.000 (80.000)	Prec@2 80.000 (80.000)
+Epoch: [5][20/73], lr: 0.00100	Time 1.899 (1.342)	Data 0.000 (0.196)	Loss 0.3143 (0.7173)	Prec@1 80.000 (71.429)	Prec@2 100.000 (90.476)
+Epoch: [5][40/73], lr: 0.00100	Time 1.830 (1.238)	Data 0.000 (0.101)	Loss 0.3448 (0.8009)	Prec@1 100.000 (72.195)	Prec@2 100.000 (88.780)
+Epoch: [5][60/73], lr: 0.00100	Time 1.799 (1.211)	Data 0.001 (0.068)	Loss 0.6119 (0.8563)	Prec@1 80.000 (71.148)	Prec@2 80.000 (87.541)
+No BN layer Freezing.
+Test: [0/56]	Time 2.199 (2.199)	Loss 0.3103 (0.3103)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.406 (0.500)	Loss 0.7414 (0.4264)	Prec@1 60.000 (82.857)	Prec@2 100.000 (99.048)
+Test: [40/56]	Time 0.370 (0.454)	Loss 0.2936 (0.4722)	Prec@1 100.000 (83.902)	Prec@2 100.000 (96.098)
+Testing Results: Prec@1 68.364 Prec@5 85.455 Loss 0.92954
+No BN layer Freezing.
+Epoch: [6][0/73], lr: 0.00100	Time 3.807 (3.807)	Data 2.621 (2.621)	Loss 0.8416 (0.8416)	Prec@1 80.000 (80.000)	Prec@2 80.000 (80.000)
+Epoch: [6][20/73], lr: 0.00100	Time 1.956 (1.260)	Data 0.000 (0.125)	Loss 0.3762 (0.8719)	Prec@1 80.000 (70.476)	Prec@2 100.000 (90.476)
+Epoch: [6][40/73], lr: 0.00100	Time 1.971 (1.208)	Data 0.000 (0.064)	Loss 1.5283 (0.8198)	Prec@1 80.000 (70.732)	Prec@2 80.000 (89.756)
+Epoch: [6][60/73], lr: 0.00100	Time 1.940 (1.191)	Data 0.000 (0.043)	Loss 0.3594 (0.7932)	Prec@1 80.000 (72.131)	Prec@2 100.000 (90.492)
+No BN layer Freezing.
+Test: [0/56]	Time 2.437 (2.437)	Loss 0.0558 (0.0558)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.356 (0.504)	Loss 0.2101 (0.2510)	Prec@1 100.000 (91.429)	Prec@2 100.000 (98.095)
+Test: [40/56]	Time 0.375 (0.456)	Loss 0.1564 (0.2908)	Prec@1 100.000 (91.220)	Prec@2 100.000 (98.049)
+Testing Results: Prec@1 73.818 Prec@5 88.727 Loss 0.86504
+No BN layer Freezing.
+Epoch: [7][0/73], lr: 0.00100	Time 5.577 (5.577)	Data 4.323 (4.323)	Loss 1.6146 (1.6146)	Prec@1 60.000 (60.000)	Prec@2 80.000 (80.000)
+Epoch: [7][20/73], lr: 0.00100	Time 1.986 (1.362)	Data 0.000 (0.206)	Loss 0.8062 (0.8701)	Prec@1 80.000 (71.429)	Prec@2 80.000 (86.667)
+Epoch: [7][40/73], lr: 0.00100	Time 1.996 (1.260)	Data 0.000 (0.106)	Loss 0.3358 (0.8123)	Prec@1 100.000 (71.220)	Prec@2 100.000 (85.854)
+Epoch: [7][60/73], lr: 0.00100	Time 1.922 (1.229)	Data 0.000 (0.071)	Loss 1.5456 (0.8553)	Prec@1 40.000 (70.820)	Prec@2 80.000 (85.902)
+No BN layer Freezing.
+Test: [0/56]	Time 1.999 (1.999)	Loss 0.0993 (0.0993)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.390 (0.505)	Loss 0.6556 (0.6246)	Prec@1 80.000 (81.905)	Prec@2 100.000 (96.190)
+Test: [40/56]	Time 0.503 (0.455)	Loss 0.4287 (0.7092)	Prec@1 80.000 (78.537)	Prec@2 100.000 (93.659)
+Testing Results: Prec@1 65.818 Prec@5 88.727 Loss 1.07885
+No BN layer Freezing.
+Epoch: [8][0/73], lr: 0.00100	Time 4.959 (4.959)	Data 3.774 (3.774)	Loss 0.6671 (0.6671)	Prec@1 80.000 (80.000)	Prec@2 80.000 (80.000)
+Epoch: [8][20/73], lr: 0.00100	Time 1.872 (1.337)	Data 0.000 (0.180)	Loss 1.3696 (0.9272)	Prec@1 60.000 (70.476)	Prec@2 60.000 (86.667)
+Epoch: [8][40/73], lr: 0.00100	Time 1.946 (1.237)	Data 0.000 (0.092)	Loss 0.2803 (0.7800)	Prec@1 80.000 (73.659)	Prec@2 100.000 (88.780)
+Epoch: [8][60/73], lr: 0.00100	Time 1.948 (1.202)	Data 0.000 (0.062)	Loss 0.6831 (0.8712)	Prec@1 60.000 (70.164)	Prec@2 100.000 (88.197)
+No BN layer Freezing.
+Test: [0/56]	Time 2.508 (2.508)	Loss 0.2838 (0.2838)	Prec@1 80.000 (80.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.421 (0.506)	Loss 0.9571 (0.6010)	Prec@1 80.000 (76.190)	Prec@2 80.000 (96.190)
+Test: [40/56]	Time 0.382 (0.453)	Loss 0.7565 (0.6552)	Prec@1 60.000 (71.707)	Prec@2 100.000 (95.122)
+Testing Results: Prec@1 62.545 Prec@5 90.182 Loss 0.94028
+No BN layer Freezing.
+Epoch: [9][0/73], lr: 0.00100	Time 4.325 (4.325)	Data 3.217 (3.217)	Loss 0.7854 (0.7854)	Prec@1 60.000 (60.000)	Prec@2 80.000 (80.000)
+Epoch: [9][20/73], lr: 0.00100	Time 1.882 (1.335)	Data 0.000 (0.200)	Loss 2.4181 (0.9732)	Prec@1 20.000 (62.857)	Prec@2 60.000 (85.714)
+Epoch: [9][40/73], lr: 0.00100	Time 1.913 (1.248)	Data 0.000 (0.103)	Loss 1.1452 (0.8549)	Prec@1 80.000 (68.293)	Prec@2 100.000 (88.780)
+Epoch: [9][60/73], lr: 0.00100	Time 1.890 (1.222)	Data 0.000 (0.069)	Loss 0.3836 (0.8565)	Prec@1 80.000 (66.557)	Prec@2 100.000 (89.180)
+No BN layer Freezing.
+Test: [0/56]	Time 2.303 (2.303)	Loss 0.2258 (0.2258)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.344 (0.532)	Loss 0.9784 (0.5016)	Prec@1 80.000 (82.857)	Prec@2 80.000 (94.286)
+Test: [40/56]	Time 0.499 (0.472)	Loss 0.5909 (0.5740)	Prec@1 60.000 (77.073)	Prec@2 100.000 (92.683)
+Testing Results: Prec@1 66.545 Prec@5 86.545 Loss 0.93332
+No BN layer Freezing.
+Epoch: [10][0/73], lr: 0.00100	Time 4.013 (4.013)	Data 2.848 (2.848)	Loss 1.1678 (1.1678)	Prec@1 60.000 (60.000)	Prec@2 60.000 (60.000)
+Epoch: [10][20/73], lr: 0.00100	Time 2.123 (1.258)	Data 0.000 (0.143)	Loss 0.3155 (0.9281)	Prec@1 80.000 (63.810)	Prec@2 100.000 (85.714)
+Epoch: [10][40/73], lr: 0.00100	Time 2.102 (1.242)	Data 0.000 (0.073)	Loss 0.2570 (0.8654)	Prec@1 100.000 (67.317)	Prec@2 100.000 (85.854)
+Epoch: [10][60/73], lr: 0.00100	Time 2.155 (1.245)	Data 0.000 (0.049)	Loss 0.4460 (0.8252)	Prec@1 80.000 (69.180)	Prec@2 100.000 (87.213)
+No BN layer Freezing.
+Test: [0/56]	Time 2.453 (2.453)	Loss 0.4082 (0.4082)	Prec@1 80.000 (80.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.371 (0.512)	Loss 1.2208 (0.5942)	Prec@1 60.000 (78.095)	Prec@2 100.000 (98.095)
+Test: [40/56]	Time 0.424 (0.469)	Loss 0.2766 (0.6734)	Prec@1 100.000 (73.171)	Prec@2 100.000 (95.122)
+Testing Results: Prec@1 63.273 Prec@5 87.273 Loss 0.96576
+No BN layer Freezing.
+Epoch: [11][0/73], lr: 0.00100	Time 3.906 (3.906)	Data 2.551 (2.551)	Loss 0.2860 (0.2860)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Epoch: [11][20/73], lr: 0.00100	Time 2.045 (1.331)	Data 0.000 (0.122)	Loss 0.7454 (0.6641)	Prec@1 60.000 (72.381)	Prec@2 100.000 (94.286)
+Epoch: [11][40/73], lr: 0.00100	Time 1.947 (1.279)	Data 0.000 (0.062)	Loss 0.6227 (0.7547)	Prec@1 60.000 (71.707)	Prec@2 80.000 (91.220)
+Epoch: [11][60/73], lr: 0.00100	Time 2.062 (1.267)	Data 0.000 (0.042)	Loss 0.9955 (0.7832)	Prec@1 40.000 (71.475)	Prec@2 60.000 (90.492)
+No BN layer Freezing.
+Test: [0/56]	Time 2.074 (2.074)	Loss 0.3866 (0.3866)	Prec@1 80.000 (80.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.387 (0.557)	Loss 1.0104 (0.5565)	Prec@1 80.000 (76.190)	Prec@2 100.000 (97.143)
+Test: [40/56]	Time 0.404 (0.485)	Loss 0.1996 (0.6726)	Prec@1 100.000 (72.195)	Prec@2 100.000 (93.659)
+Testing Results: Prec@1 61.818 Prec@5 86.182 Loss 1.01930
+No BN layer Freezing.
+Epoch: [12][0/73], lr: 0.00100	Time 3.536 (3.536)	Data 2.242 (2.242)	Loss 0.3870 (0.3870)	Prec@1 80.000 (80.000)	Prec@2 100.000 (100.000)
+Epoch: [12][20/73], lr: 0.00100	Time 2.087 (1.356)	Data 0.000 (0.107)	Loss 0.3108 (0.6236)	Prec@1 80.000 (78.095)	Prec@2 100.000 (89.524)
+Epoch: [12][40/73], lr: 0.00100	Time 2.125 (1.299)	Data 0.000 (0.055)	Loss 0.9910 (0.7195)	Prec@1 40.000 (73.171)	Prec@2 80.000 (89.756)
+Epoch: [12][60/73], lr: 0.00100	Time 1.968 (1.278)	Data 0.000 (0.037)	Loss 1.3456 (0.8450)	Prec@1 60.000 (69.180)	Prec@2 80.000 (87.869)
+No BN layer Freezing.
+Test: [0/56]	Time 1.817 (1.817)	Loss 0.4687 (0.4687)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.398 (0.520)	Loss 1.0654 (0.7242)	Prec@1 60.000 (72.381)	Prec@2 80.000 (96.190)
+Test: [40/56]	Time 0.431 (0.479)	Loss 0.4285 (0.8440)	Prec@1 100.000 (67.317)	Prec@2 100.000 (89.756)
+Testing Results: Prec@1 61.455 Prec@5 84.364 Loss 0.95822
+No BN layer Freezing.
+Epoch: [13][0/73], lr: 0.00100	Time 3.682 (3.682)	Data 2.331 (2.331)	Loss 0.6693 (0.6693)	Prec@1 60.000 (60.000)	Prec@2 100.000 (100.000)
+Epoch: [13][20/73], lr: 0.00100	Time 2.129 (1.364)	Data 0.000 (0.111)	Loss 1.8015 (0.7626)	Prec@1 60.000 (73.333)	Prec@2 100.000 (88.571)
+Epoch: [13][40/73], lr: 0.00100	Time 2.070 (1.302)	Data 0.000 (0.057)	Loss 0.3754 (0.7111)	Prec@1 100.000 (76.585)	Prec@2 100.000 (91.220)
+Epoch: [13][60/73], lr: 0.00100	Time 2.150 (1.278)	Data 0.000 (0.038)	Loss 1.5249 (0.7534)	Prec@1 60.000 (75.738)	Prec@2 60.000 (89.508)
+No BN layer Freezing.
+Test: [0/56]	Time 2.258 (2.258)	Loss 0.1390 (0.1390)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.379 (0.546)	Loss 0.4077 (0.4179)	Prec@1 80.000 (86.667)	Prec@2 100.000 (97.143)
+Test: [40/56]	Time 0.403 (0.484)	Loss 0.1309 (0.5455)	Prec@1 100.000 (78.537)	Prec@2 100.000 (95.122)
+Testing Results: Prec@1 66.909 Prec@5 88.364 Loss 0.92462
+No BN layer Freezing.
+Epoch: [14][0/73], lr: 0.00100	Time 4.000 (4.000)	Data 2.650 (2.650)	Loss 1.6839 (1.6839)	Prec@1 40.000 (40.000)	Prec@2 80.000 (80.000)
+Epoch: [14][20/73], lr: 0.00100	Time 2.126 (1.366)	Data 0.000 (0.126)	Loss 0.7399 (0.8593)	Prec@1 80.000 (73.333)	Prec@2 80.000 (86.667)
+Epoch: [14][40/73], lr: 0.00100	Time 2.176 (1.300)	Data 0.000 (0.065)	Loss 0.3829 (0.7389)	Prec@1 80.000 (73.659)	Prec@2 100.000 (90.732)
+Epoch: [14][60/73], lr: 0.00100	Time 1.945 (1.276)	Data 0.000 (0.044)	Loss 2.0828 (0.7172)	Prec@1 20.000 (75.082)	Prec@2 60.000 (91.148)
+No BN layer Freezing.
+Test: [0/56]	Time 1.817 (1.817)	Loss 0.1485 (0.1485)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.380 (0.534)	Loss 0.4119 (0.2955)	Prec@1 80.000 (90.476)	Prec@2 100.000 (100.000)
+Test: [40/56]	Time 0.430 (0.477)	Loss 0.1978 (0.3283)	Prec@1 100.000 (88.293)	Prec@2 100.000 (99.512)
+Testing Results: Prec@1 73.091 Prec@5 92.727 Loss 0.77626
+No BN layer Freezing.
+Epoch: [15][0/73], lr: 0.00010	Time 3.589 (3.589)	Data 2.274 (2.274)	Loss 0.1131 (0.1131)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Epoch: [15][20/73], lr: 0.00010	Time 2.103 (1.335)	Data 0.000 (0.109)	Loss 0.3838 (0.7142)	Prec@1 100.000 (78.095)	Prec@2 100.000 (90.476)
+Epoch: [15][40/73], lr: 0.00010	Time 2.093 (1.282)	Data 0.000 (0.056)	Loss 0.2594 (0.6369)	Prec@1 100.000 (77.073)	Prec@2 100.000 (91.707)
+Epoch: [15][60/73], lr: 0.00010	Time 1.983 (1.264)	Data 0.000 (0.037)	Loss 1.2256 (0.7051)	Prec@1 60.000 (75.410)	Prec@2 60.000 (90.820)
+No BN layer Freezing.
+Test: [0/56]	Time 1.904 (1.904)	Loss 0.2141 (0.2141)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.402 (0.520)	Loss 0.5636 (0.4336)	Prec@1 80.000 (81.905)	Prec@2 100.000 (98.095)
+Test: [40/56]	Time 0.396 (0.470)	Loss 0.3101 (0.4981)	Prec@1 100.000 (78.537)	Prec@2 100.000 (96.585)
+Testing Results: Prec@1 67.273 Prec@5 90.909 Loss 0.85701
+No BN layer Freezing.
+Epoch: [16][0/73], lr: 0.00010	Time 3.605 (3.605)	Data 2.275 (2.275)	Loss 0.5440 (0.5440)	Prec@1 80.000 (80.000)	Prec@2 80.000 (80.000)
+Epoch: [16][20/73], lr: 0.00010	Time 2.011 (1.317)	Data 0.000 (0.109)	Loss 0.3888 (0.6522)	Prec@1 100.000 (76.190)	Prec@2 100.000 (92.381)
+Epoch: [16][40/73], lr: 0.00010	Time 2.070 (1.281)	Data 0.000 (0.056)	Loss 0.2749 (0.6302)	Prec@1 100.000 (75.122)	Prec@2 100.000 (91.707)
+Epoch: [16][60/73], lr: 0.00010	Time 2.059 (1.262)	Data 0.000 (0.037)	Loss 1.4562 (0.6507)	Prec@1 60.000 (76.066)	Prec@2 80.000 (91.148)
+No BN layer Freezing.
+Test: [0/56]	Time 1.966 (1.966)	Loss 0.1640 (0.1640)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.527 (0.507)	Loss 0.4228 (0.3569)	Prec@1 80.000 (85.714)	Prec@2 100.000 (100.000)
+Test: [40/56]	Time 0.412 (0.463)	Loss 0.2939 (0.3989)	Prec@1 100.000 (82.927)	Prec@2 100.000 (98.537)
+Testing Results: Prec@1 69.818 Prec@5 93.091 Loss 0.78610
+No BN layer Freezing.
+Epoch: [17][0/73], lr: 0.00010	Time 3.707 (3.707)	Data 2.530 (2.530)	Loss 0.6198 (0.6198)	Prec@1 60.000 (60.000)	Prec@2 100.000 (100.000)
+Epoch: [17][20/73], lr: 0.00010	Time 2.250 (1.341)	Data 0.000 (0.121)	Loss 0.4006 (0.7773)	Prec@1 100.000 (72.381)	Prec@2 100.000 (92.381)
+Epoch: [17][40/73], lr: 0.00010	Time 2.271 (1.295)	Data 0.000 (0.062)	Loss 0.9607 (0.8166)	Prec@1 80.000 (73.659)	Prec@2 80.000 (90.732)
+Epoch: [17][60/73], lr: 0.00010	Time 2.064 (1.264)	Data 0.000 (0.042)	Loss 0.4909 (0.7086)	Prec@1 60.000 (76.393)	Prec@2 100.000 (92.131)
+No BN layer Freezing.
+Test: [0/56]	Time 1.829 (1.829)	Loss 0.2093 (0.2093)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.403 (0.491)	Loss 0.5662 (0.4501)	Prec@1 80.000 (83.810)	Prec@2 100.000 (99.048)
+Test: [40/56]	Time 0.439 (0.451)	Loss 0.4282 (0.5089)	Prec@1 80.000 (80.976)	Prec@2 100.000 (97.073)
+Testing Results: Prec@1 69.455 Prec@5 92.000 Loss 0.81154
+No BN layer Freezing.
+Epoch: [18][0/73], lr: 0.00010	Time 3.857 (3.857)	Data 2.640 (2.640)	Loss 0.6262 (0.6262)	Prec@1 80.000 (80.000)	Prec@2 80.000 (80.000)
+Epoch: [18][20/73], lr: 0.00010	Time 2.164 (1.345)	Data 0.000 (0.126)	Loss 0.4888 (0.7753)	Prec@1 80.000 (73.333)	Prec@2 100.000 (93.333)
+Epoch: [18][40/73], lr: 0.00010	Time 2.086 (1.303)	Data 0.000 (0.065)	Loss 0.8864 (0.6875)	Prec@1 80.000 (76.098)	Prec@2 100.000 (93.171)
+Epoch: [18][60/73], lr: 0.00010	Time 2.042 (1.275)	Data 0.000 (0.043)	Loss 0.3039 (0.7040)	Prec@1 80.000 (76.066)	Prec@2 100.000 (92.459)
+No BN layer Freezing.
+Test: [0/56]	Time 2.042 (2.042)	Loss 0.2770 (0.2770)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.394 (0.496)	Loss 0.7902 (0.5578)	Prec@1 80.000 (77.143)	Prec@2 100.000 (99.048)
+Test: [40/56]	Time 0.386 (0.453)	Loss 0.4905 (0.6342)	Prec@1 80.000 (73.659)	Prec@2 100.000 (95.122)
+Testing Results: Prec@1 64.727 Prec@5 91.273 Loss 0.88587
+No BN layer Freezing.
+Epoch: [19][0/73], lr: 0.00010	Time 3.880 (3.880)	Data 2.602 (2.602)	Loss 0.2818 (0.2818)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Epoch: [19][20/73], lr: 0.00010	Time 2.171 (1.344)	Data 0.000 (0.124)	Loss 0.6714 (0.6647)	Prec@1 80.000 (75.238)	Prec@2 80.000 (92.381)
+Epoch: [19][40/73], lr: 0.00010	Time 1.996 (1.285)	Data 0.000 (0.064)	Loss 0.2048 (0.6417)	Prec@1 100.000 (75.610)	Prec@2 100.000 (91.220)
+Epoch: [19][60/73], lr: 0.00010	Time 2.101 (1.277)	Data 0.000 (0.043)	Loss 0.6802 (0.6406)	Prec@1 80.000 (77.049)	Prec@2 100.000 (92.459)
+No BN layer Freezing.
+Test: [0/56]	Time 2.676 (2.676)	Loss 0.2078 (0.2078)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.405 (0.535)	Loss 0.6918 (0.4904)	Prec@1 80.000 (80.000)	Prec@2 100.000 (100.000)
+Test: [40/56]	Time 0.409 (0.481)	Loss 0.4246 (0.5598)	Prec@1 80.000 (77.073)	Prec@2 100.000 (96.585)
+Testing Results: Prec@1 65.818 Prec@5 90.909 Loss 0.86566
+No BN layer Freezing.
+Epoch: [20][0/73], lr: 0.00010	Time 3.234 (3.234)	Data 1.641 (1.641)	Loss 0.9390 (0.9390)	Prec@1 40.000 (40.000)	Prec@2 60.000 (60.000)
+Epoch: [20][20/73], lr: 0.00010	Time 2.046 (1.315)	Data 0.000 (0.078)	Loss 1.0626 (0.7611)	Prec@1 60.000 (73.333)	Prec@2 80.000 (88.571)
+Epoch: [20][40/73], lr: 0.00010	Time 2.162 (1.276)	Data 0.000 (0.040)	Loss 0.4261 (0.6718)	Prec@1 80.000 (75.122)	Prec@2 100.000 (90.732)
+Epoch: [20][60/73], lr: 0.00010	Time 2.139 (1.277)	Data 0.000 (0.027)	Loss 0.3120 (0.6700)	Prec@1 100.000 (75.738)	Prec@2 100.000 (90.820)
+No BN layer Freezing.
+Test: [0/56]	Time 2.309 (2.309)	Loss 0.2390 (0.2390)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.407 (0.550)	Loss 0.7013 (0.4438)	Prec@1 80.000 (85.714)	Prec@2 100.000 (99.048)
+Test: [40/56]	Time 0.375 (0.482)	Loss 0.3454 (0.5030)	Prec@1 100.000 (82.439)	Prec@2 100.000 (96.585)
+Testing Results: Prec@1 69.455 Prec@5 91.636 Loss 0.80354
+No BN layer Freezing.
+Epoch: [21][0/73], lr: 0.00010	Time 3.392 (3.392)	Data 2.012 (2.012)	Loss 0.9568 (0.9568)	Prec@1 80.000 (80.000)	Prec@2 100.000 (100.000)
+Epoch: [21][20/73], lr: 0.00010	Time 2.127 (1.336)	Data 0.000 (0.096)	Loss 0.2680 (0.7151)	Prec@1 100.000 (74.286)	Prec@2 100.000 (92.381)
+Epoch: [21][40/73], lr: 0.00010	Time 2.136 (1.293)	Data 0.000 (0.049)	Loss 0.6207 (0.6671)	Prec@1 80.000 (75.610)	Prec@2 100.000 (92.683)
+Epoch: [21][60/73], lr: 0.00010	Time 2.164 (1.271)	Data 0.000 (0.033)	Loss 0.9197 (0.6598)	Prec@1 60.000 (76.066)	Prec@2 100.000 (92.459)
+No BN layer Freezing.
+Test: [0/56]	Time 2.182 (2.182)	Loss 0.1924 (0.1924)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.435 (0.503)	Loss 0.7458 (0.5521)	Prec@1 80.000 (78.095)	Prec@2 100.000 (97.143)
+Test: [40/56]	Time 0.420 (0.458)	Loss 0.4804 (0.6579)	Prec@1 80.000 (74.634)	Prec@2 100.000 (94.634)
+Testing Results: Prec@1 66.909 Prec@5 89.455 Loss 0.94823
+No BN layer Freezing.
+Epoch: [22][0/73], lr: 0.00010	Time 3.724 (3.724)	Data 2.500 (2.500)	Loss 1.7374 (1.7374)	Prec@1 40.000 (40.000)	Prec@2 80.000 (80.000)
+Epoch: [22][20/73], lr: 0.00010	Time 2.032 (1.351)	Data 0.000 (0.119)	Loss 0.6572 (0.8506)	Prec@1 60.000 (69.524)	Prec@2 60.000 (88.571)
+Epoch: [22][40/73], lr: 0.00010	Time 2.148 (1.294)	Data 0.000 (0.061)	Loss 1.2281 (0.7837)	Prec@1 80.000 (70.732)	Prec@2 80.000 (90.244)
+Epoch: [22][60/73], lr: 0.00010	Time 2.059 (1.273)	Data 0.000 (0.041)	Loss 1.0827 (0.6888)	Prec@1 60.000 (75.410)	Prec@2 60.000 (92.131)
+No BN layer Freezing.
+Test: [0/56]	Time 1.894 (1.894)	Loss 0.2312 (0.2312)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.374 (0.527)	Loss 0.6670 (0.4950)	Prec@1 80.000 (81.905)	Prec@2 100.000 (97.143)
+Test: [40/56]	Time 0.409 (0.475)	Loss 0.2843 (0.5648)	Prec@1 100.000 (78.537)	Prec@2 100.000 (94.634)
+Testing Results: Prec@1 67.636 Prec@5 90.545 Loss 0.89115
+No BN layer Freezing.
+Epoch: [23][0/73], lr: 0.00010	Time 5.206 (5.206)	Data 3.759 (3.759)	Loss 0.2941 (0.2941)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Epoch: [23][20/73], lr: 0.00010	Time 1.995 (1.373)	Data 0.000 (0.179)	Loss 0.4332 (0.6036)	Prec@1 80.000 (77.143)	Prec@2 100.000 (92.381)
+Epoch: [23][40/73], lr: 0.00010	Time 2.150 (1.295)	Data 0.000 (0.092)	Loss 1.6779 (0.6098)	Prec@1 40.000 (77.073)	Prec@2 80.000 (92.683)
+Epoch: [23][60/73], lr: 0.00010	Time 2.158 (1.274)	Data 0.000 (0.062)	Loss 0.2999 (0.6362)	Prec@1 100.000 (76.721)	Prec@2 100.000 (92.787)
+No BN layer Freezing.
+Test: [0/56]	Time 2.099 (2.099)	Loss 0.1690 (0.1690)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.572 (0.524)	Loss 0.4589 (0.4108)	Prec@1 80.000 (83.810)	Prec@2 100.000 (100.000)
+Test: [40/56]	Time 0.372 (0.482)	Loss 0.3470 (0.4675)	Prec@1 80.000 (81.951)	Prec@2 100.000 (97.073)
+Testing Results: Prec@1 69.091 Prec@5 91.273 Loss 0.81188
+No BN layer Freezing.
+Epoch: [24][0/73], lr: 0.00010	Time 3.999 (3.999)	Data 2.731 (2.731)	Loss 0.3192 (0.3192)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Epoch: [24][20/73], lr: 0.00010	Time 2.102 (1.361)	Data 0.000 (0.130)	Loss 0.4305 (0.5931)	Prec@1 80.000 (76.190)	Prec@2 100.000 (93.333)
+Epoch: [24][40/73], lr: 0.00010	Time 1.970 (1.283)	Data 0.000 (0.067)	Loss 0.2746 (0.6221)	Prec@1 100.000 (75.122)	Prec@2 100.000 (92.683)
+Epoch: [24][60/73], lr: 0.00010	Time 2.103 (1.258)	Data 0.000 (0.045)	Loss 0.9515 (0.6593)	Prec@1 60.000 (74.426)	Prec@2 80.000 (91.148)
+No BN layer Freezing.
+Test: [0/56]	Time 2.002 (2.002)	Loss 0.2445 (0.2445)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.398 (0.506)	Loss 0.8488 (0.5639)	Prec@1 60.000 (75.238)	Prec@2 100.000 (97.143)
+Test: [40/56]	Time 0.521 (0.467)	Loss 0.3236 (0.6564)	Prec@1 80.000 (71.707)	Prec@2 100.000 (93.659)
+Testing Results: Prec@1 61.818 Prec@5 89.091 Loss 0.95408
+No BN layer Freezing.
+Epoch: [25][0/73], lr: 0.00010	Time 3.192 (3.192)	Data 1.835 (1.835)	Loss 0.5419 (0.5419)	Prec@1 80.000 (80.000)	Prec@2 80.000 (80.000)
+Epoch: [25][20/73], lr: 0.00010	Time 2.097 (1.325)	Data 0.000 (0.090)	Loss 0.6602 (0.5700)	Prec@1 80.000 (82.857)	Prec@2 100.000 (93.333)
+Epoch: [25][40/73], lr: 0.00010	Time 1.982 (1.281)	Data 0.000 (0.046)	Loss 0.7730 (0.6498)	Prec@1 40.000 (78.049)	Prec@2 100.000 (92.683)
+Epoch: [25][60/73], lr: 0.00010	Time 2.070 (1.267)	Data 0.000 (0.031)	Loss 0.4377 (0.6326)	Prec@1 80.000 (78.361)	Prec@2 100.000 (92.787)
+No BN layer Freezing.
+Test: [0/56]	Time 1.788 (1.788)	Loss 0.2571 (0.2571)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.425 (0.535)	Loss 0.7813 (0.5699)	Prec@1 60.000 (77.143)	Prec@2 100.000 (96.190)
+Test: [40/56]	Time 0.386 (0.472)	Loss 0.2618 (0.6761)	Prec@1 100.000 (73.171)	Prec@2 100.000 (93.659)
+Testing Results: Prec@1 62.909 Prec@5 87.636 Loss 1.00544
+No BN layer Freezing.
+Epoch: [26][0/73], lr: 0.00010	Time 3.469 (3.469)	Data 2.129 (2.129)	Loss 0.9142 (0.9142)	Prec@1 40.000 (40.000)	Prec@2 100.000 (100.000)
+Epoch: [26][20/73], lr: 0.00010	Time 2.161 (1.341)	Data 0.000 (0.102)	Loss 0.3812 (0.7659)	Prec@1 100.000 (72.381)	Prec@2 100.000 (88.571)
+Epoch: [26][40/73], lr: 0.00010	Time 2.160 (1.282)	Data 0.000 (0.052)	Loss 0.4091 (0.7166)	Prec@1 80.000 (75.610)	Prec@2 100.000 (90.244)
+Epoch: [26][60/73], lr: 0.00010	Time 2.148 (1.261)	Data 0.000 (0.035)	Loss 1.3018 (0.6933)	Prec@1 40.000 (76.393)	Prec@2 100.000 (90.492)
+No BN layer Freezing.
+Test: [0/56]	Time 2.533 (2.533)	Loss 0.2406 (0.2406)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.407 (0.518)	Loss 0.7061 (0.5645)	Prec@1 80.000 (73.333)	Prec@2 100.000 (96.190)
+Test: [40/56]	Time 0.425 (0.469)	Loss 0.4106 (0.6381)	Prec@1 80.000 (72.195)	Prec@2 100.000 (94.146)
+Testing Results: Prec@1 62.909 Prec@5 89.455 Loss 0.89889
+No BN layer Freezing.
+Epoch: [27][0/73], lr: 0.00010	Time 3.541 (3.541)	Data 2.271 (2.271)	Loss 1.0066 (1.0066)	Prec@1 80.000 (80.000)	Prec@2 80.000 (80.000)
+Epoch: [27][20/73], lr: 0.00010	Time 2.124 (1.331)	Data 0.000 (0.108)	Loss 0.4264 (0.6767)	Prec@1 80.000 (76.190)	Prec@2 100.000 (93.333)
+Epoch: [27][40/73], lr: 0.00010	Time 2.110 (1.288)	Data 0.000 (0.056)	Loss 0.6045 (0.5898)	Prec@1 80.000 (79.024)	Prec@2 100.000 (93.171)
+Epoch: [27][60/73], lr: 0.00010	Time 2.091 (1.272)	Data 0.000 (0.037)	Loss 0.3484 (0.5840)	Prec@1 80.000 (78.033)	Prec@2 100.000 (92.787)
+No BN layer Freezing.
+Test: [0/56]	Time 2.055 (2.055)	Loss 0.1955 (0.1955)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.471 (0.532)	Loss 0.8285 (0.5360)	Prec@1 80.000 (79.048)	Prec@2 100.000 (97.143)
+Test: [40/56]	Time 0.411 (0.478)	Loss 0.2745 (0.6110)	Prec@1 100.000 (75.122)	Prec@2 100.000 (94.146)
+Testing Results: Prec@1 65.455 Prec@5 89.091 Loss 0.90175
+No BN layer Freezing.
+Epoch: [28][0/73], lr: 0.00010	Time 3.851 (3.851)	Data 2.642 (2.642)	Loss 0.1758 (0.1758)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Epoch: [28][20/73], lr: 0.00010	Time 2.227 (1.344)	Data 0.000 (0.126)	Loss 0.6961 (0.5699)	Prec@1 60.000 (79.048)	Prec@2 100.000 (93.333)
+Epoch: [28][40/73], lr: 0.00010	Time 1.923 (1.297)	Data 0.000 (0.065)	Loss 0.6319 (0.5821)	Prec@1 60.000 (78.537)	Prec@2 100.000 (93.659)
+Epoch: [28][60/73], lr: 0.00010	Time 2.158 (1.268)	Data 0.000 (0.043)	Loss 0.2695 (0.6281)	Prec@1 80.000 (75.410)	Prec@2 100.000 (93.115)
+No BN layer Freezing.
+Test: [0/56]	Time 2.213 (2.213)	Loss 0.1456 (0.1456)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.466 (0.520)	Loss 0.8241 (0.5390)	Prec@1 80.000 (80.000)	Prec@2 100.000 (99.048)
+Test: [40/56]	Time 0.592 (0.479)	Loss 0.3086 (0.6372)	Prec@1 100.000 (75.122)	Prec@2 100.000 (96.098)
+Testing Results: Prec@1 64.364 Prec@5 89.818 Loss 0.96101
+No BN layer Freezing.
+Epoch: [29][0/73], lr: 0.00010	Time 3.890 (3.890)	Data 2.593 (2.593)	Loss 0.1658 (0.1658)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Epoch: [29][20/73], lr: 0.00010	Time 1.966 (1.336)	Data 0.000 (0.124)	Loss 0.3321 (0.5472)	Prec@1 100.000 (85.714)	Prec@2 100.000 (96.190)
+Epoch: [29][40/73], lr: 0.00010	Time 2.213 (1.299)	Data 0.000 (0.063)	Loss 0.2527 (0.6241)	Prec@1 100.000 (80.488)	Prec@2 100.000 (93.171)
+Epoch: [29][60/73], lr: 0.00010	Time 2.026 (1.267)	Data 0.000 (0.043)	Loss 0.2267 (0.6128)	Prec@1 100.000 (80.984)	Prec@2 100.000 (93.770)
+No BN layer Freezing.
+Test: [0/56]	Time 2.545 (2.545)	Loss 0.1750 (0.1750)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.400 (0.553)	Loss 0.9271 (0.6085)	Prec@1 80.000 (77.143)	Prec@2 100.000 (99.048)
+Test: [40/56]	Time 0.379 (0.487)	Loss 0.3590 (0.6947)	Prec@1 80.000 (72.195)	Prec@2 100.000 (93.659)
+Testing Results: Prec@1 63.636 Prec@5 90.545 Loss 0.93245
+No BN layer Freezing.
+Epoch: [30][0/73], lr: 0.00001	Time 3.128 (3.128)	Data 1.816 (1.816)	Loss 1.3471 (1.3471)	Prec@1 40.000 (40.000)	Prec@2 80.000 (80.000)
+Epoch: [30][20/73], lr: 0.00001	Time 2.042 (1.326)	Data 0.000 (0.087)	Loss 1.4449 (0.6515)	Prec@1 40.000 (75.238)	Prec@2 80.000 (89.524)
+Epoch: [30][40/73], lr: 0.00001	Time 2.192 (1.284)	Data 0.000 (0.044)	Loss 1.1051 (0.6597)	Prec@1 80.000 (78.049)	Prec@2 80.000 (92.683)
+Epoch: [30][60/73], lr: 0.00001	Time 2.194 (1.271)	Data 0.000 (0.030)	Loss 1.5393 (0.6258)	Prec@1 60.000 (79.016)	Prec@2 80.000 (92.459)
+No BN layer Freezing.
+Test: [0/56]	Time 1.596 (1.596)	Loss 0.2381 (0.2381)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.388 (0.509)	Loss 0.8383 (0.5753)	Prec@1 80.000 (79.048)	Prec@2 100.000 (99.048)
+Test: [40/56]	Time 0.520 (0.478)	Loss 0.3439 (0.6304)	Prec@1 100.000 (76.098)	Prec@2 100.000 (96.098)
+Testing Results: Prec@1 65.818 Prec@5 90.545 Loss 0.89140
+No BN layer Freezing.
+Epoch: [31][0/73], lr: 0.00001	Time 3.412 (3.412)	Data 1.945 (1.945)	Loss 0.1867 (0.1867)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Epoch: [31][20/73], lr: 0.00001	Time 2.015 (1.353)	Data 0.000 (0.097)	Loss 0.7364 (0.6351)	Prec@1 60.000 (75.238)	Prec@2 100.000 (94.286)
+Epoch: [31][40/73], lr: 0.00001	Time 2.105 (1.292)	Data 0.000 (0.050)	Loss 0.1280 (0.5973)	Prec@1 100.000 (76.098)	Prec@2 100.000 (93.659)
+Epoch: [31][60/73], lr: 0.00001	Time 2.117 (1.268)	Data 0.000 (0.034)	Loss 0.3277 (0.6384)	Prec@1 100.000 (76.066)	Prec@2 100.000 (93.115)
+No BN layer Freezing.
+Test: [0/56]	Time 1.572 (1.572)	Loss 0.2317 (0.2317)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.439 (0.517)	Loss 0.8649 (0.5543)	Prec@1 80.000 (80.952)	Prec@2 100.000 (98.095)
+Test: [40/56]	Time 0.392 (0.468)	Loss 0.4972 (0.6529)	Prec@1 80.000 (77.073)	Prec@2 100.000 (95.610)
+Testing Results: Prec@1 67.636 Prec@5 89.818 Loss 0.89562
+No BN layer Freezing.
+Epoch: [32][0/73], lr: 0.00001	Time 3.480 (3.480)	Data 2.271 (2.271)	Loss 0.3415 (0.3415)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Epoch: [32][20/73], lr: 0.00001	Time 2.046 (1.340)	Data 0.000 (0.108)	Loss 0.9547 (0.5241)	Prec@1 60.000 (82.857)	Prec@2 80.000 (92.381)
+Epoch: [32][40/73], lr: 0.00001	Time 2.427 (1.309)	Data 0.000 (0.056)	Loss 0.3493 (0.5854)	Prec@1 80.000 (78.537)	Prec@2 100.000 (93.171)
+Epoch: [32][60/73], lr: 0.00001	Time 1.978 (1.281)	Data 0.000 (0.037)	Loss 0.2812 (0.5955)	Prec@1 100.000 (79.344)	Prec@2 100.000 (93.115)
+No BN layer Freezing.
+Test: [0/56]	Time 1.933 (1.933)	Loss 0.3149 (0.3149)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.427 (0.544)	Loss 1.0208 (0.6657)	Prec@1 60.000 (76.190)	Prec@2 100.000 (97.143)
+Test: [40/56]	Time 0.397 (0.487)	Loss 0.4011 (0.7522)	Prec@1 80.000 (70.244)	Prec@2 100.000 (94.634)
+Testing Results: Prec@1 62.182 Prec@5 89.818 Loss 0.96578
+No BN layer Freezing.
+Epoch: [33][0/73], lr: 0.00001	Time 3.407 (3.407)	Data 1.987 (1.987)	Loss 0.3055 (0.3055)	Prec@1 80.000 (80.000)	Prec@2 100.000 (100.000)
+Epoch: [33][20/73], lr: 0.00001	Time 2.109 (1.333)	Data 0.000 (0.095)	Loss 0.3376 (0.5611)	Prec@1 80.000 (78.095)	Prec@2 100.000 (93.333)
+Epoch: [33][40/73], lr: 0.00001	Time 2.007 (1.288)	Data 0.000 (0.049)	Loss 0.9161 (0.5346)	Prec@1 60.000 (81.463)	Prec@2 100.000 (94.634)
+Epoch: [33][60/73], lr: 0.00001	Time 1.971 (1.277)	Data 0.000 (0.033)	Loss 1.0479 (0.5731)	Prec@1 60.000 (80.984)	Prec@2 80.000 (93.115)
+No BN layer Freezing.
+Test: [0/56]	Time 2.384 (2.384)	Loss 0.1826 (0.1826)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.396 (0.500)	Loss 0.7072 (0.4599)	Prec@1 80.000 (84.762)	Prec@2 100.000 (99.048)
+Test: [40/56]	Time 0.380 (0.455)	Loss 0.3196 (0.5341)	Prec@1 100.000 (80.000)	Prec@2 100.000 (96.585)
+Testing Results: Prec@1 68.364 Prec@5 90.545 Loss 0.82776
+No BN layer Freezing.
+Epoch: [34][0/73], lr: 0.00001	Time 3.425 (3.425)	Data 2.248 (2.248)	Loss 0.3194 (0.3194)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Epoch: [34][20/73], lr: 0.00001	Time 2.097 (1.336)	Data 0.000 (0.107)	Loss 0.7557 (0.5282)	Prec@1 80.000 (80.000)	Prec@2 80.000 (94.286)
+Epoch: [34][40/73], lr: 0.00001	Time 2.049 (1.275)	Data 0.000 (0.055)	Loss 0.5049 (0.5836)	Prec@1 80.000 (79.512)	Prec@2 80.000 (91.220)
+Epoch: [34][60/73], lr: 0.00001	Time 2.100 (1.265)	Data 0.000 (0.037)	Loss 0.4201 (0.5601)	Prec@1 80.000 (81.639)	Prec@2 100.000 (92.131)
+No BN layer Freezing.
+Test: [0/56]	Time 1.870 (1.870)	Loss 0.1693 (0.1693)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.540 (0.506)	Loss 0.7650 (0.5042)	Prec@1 80.000 (82.857)	Prec@2 100.000 (98.095)
+Test: [40/56]	Time 0.394 (0.456)	Loss 0.2884 (0.5824)	Prec@1 100.000 (78.049)	Prec@2 100.000 (94.634)
+Testing Results: Prec@1 67.636 Prec@5 89.455 Loss 0.89006
+No BN layer Freezing.
+Epoch: [35][0/73], lr: 0.00001	Time 3.481 (3.481)	Data 1.940 (1.940)	Loss 0.4868 (0.4868)	Prec@1 80.000 (80.000)	Prec@2 100.000 (100.000)
+Epoch: [35][20/73], lr: 0.00001	Time 2.060 (1.329)	Data 0.000 (0.093)	Loss 0.2021 (0.5087)	Prec@1 100.000 (83.810)	Prec@2 100.000 (95.238)
+Epoch: [35][40/73], lr: 0.00001	Time 2.081 (1.275)	Data 0.000 (0.048)	Loss 0.2233 (0.6254)	Prec@1 100.000 (79.512)	Prec@2 100.000 (93.171)
+Epoch: [35][60/73], lr: 0.00001	Time 2.039 (1.260)	Data 0.000 (0.032)	Loss 0.7826 (0.6426)	Prec@1 80.000 (78.361)	Prec@2 100.000 (93.115)
+No BN layer Freezing.
+Test: [0/56]	Time 2.505 (2.505)	Loss 0.2486 (0.2486)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.401 (0.530)	Loss 0.8470 (0.5773)	Prec@1 80.000 (78.095)	Prec@2 100.000 (97.143)
+Test: [40/56]	Time 0.429 (0.476)	Loss 0.3089 (0.6289)	Prec@1 100.000 (75.122)	Prec@2 100.000 (94.634)
+Testing Results: Prec@1 64.364 Prec@5 88.364 Loss 0.92698
+No BN layer Freezing.
+Epoch: [36][0/73], lr: 0.00001	Time 4.361 (4.361)	Data 3.061 (3.061)	Loss 0.4283 (0.4283)	Prec@1 80.000 (80.000)	Prec@2 80.000 (80.000)
+Epoch: [36][20/73], lr: 0.00001	Time 2.008 (1.382)	Data 0.000 (0.146)	Loss 0.1472 (0.4550)	Prec@1 100.000 (81.905)	Prec@2 100.000 (95.238)
+Epoch: [36][40/73], lr: 0.00001	Time 1.978 (1.292)	Data 0.000 (0.075)	Loss 0.6088 (0.6173)	Prec@1 80.000 (76.585)	Prec@2 80.000 (90.732)
+Epoch: [36][60/73], lr: 0.00001	Time 2.060 (1.264)	Data 0.000 (0.050)	Loss 0.5127 (0.7061)	Prec@1 80.000 (73.770)	Prec@2 80.000 (89.836)
+No BN layer Freezing.
+Test: [0/56]	Time 2.515 (2.515)	Loss 0.1950 (0.1950)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.384 (0.518)	Loss 0.9478 (0.6318)	Prec@1 80.000 (78.095)	Prec@2 100.000 (93.333)
+Test: [40/56]	Time 0.409 (0.475)	Loss 0.3729 (0.7241)	Prec@1 80.000 (71.707)	Prec@2 100.000 (90.732)
+Testing Results: Prec@1 64.000 Prec@5 88.364 Loss 0.96197
+No BN layer Freezing.
+Epoch: [37][0/73], lr: 0.00001	Time 4.412 (4.412)	Data 3.030 (3.030)	Loss 0.3993 (0.3993)	Prec@1 80.000 (80.000)	Prec@2 80.000 (80.000)
+Epoch: [37][20/73], lr: 0.00001	Time 2.031 (1.374)	Data 0.000 (0.145)	Loss 0.4225 (0.5510)	Prec@1 60.000 (80.952)	Prec@2 100.000 (97.143)
+Epoch: [37][40/73], lr: 0.00001	Time 1.945 (1.299)	Data 0.000 (0.074)	Loss 0.6062 (0.5854)	Prec@1 80.000 (78.537)	Prec@2 80.000 (96.098)
+Epoch: [37][60/73], lr: 0.00001	Time 2.085 (1.278)	Data 0.000 (0.050)	Loss 0.9700 (0.6352)	Prec@1 80.000 (79.016)	Prec@2 80.000 (94.426)
+No BN layer Freezing.
+Test: [0/56]	Time 2.061 (2.061)	Loss 0.2299 (0.2299)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.432 (0.499)	Loss 0.9467 (0.6047)	Prec@1 80.000 (77.143)	Prec@2 100.000 (97.143)
+Test: [40/56]	Time 0.378 (0.460)	Loss 0.3534 (0.6715)	Prec@1 100.000 (74.146)	Prec@2 100.000 (94.634)
+Testing Results: Prec@1 64.727 Prec@5 89.455 Loss 0.93701
+No BN layer Freezing.
+Epoch: [38][0/73], lr: 0.00001	Time 4.182 (4.182)	Data 2.869 (2.869)	Loss 0.3216 (0.3216)	Prec@1 80.000 (80.000)	Prec@2 100.000 (100.000)
+Epoch: [38][20/73], lr: 0.00001	Time 2.219 (1.370)	Data 0.000 (0.137)	Loss 1.1733 (0.6207)	Prec@1 60.000 (77.143)	Prec@2 80.000 (92.381)
+Epoch: [38][40/73], lr: 0.00001	Time 2.145 (1.297)	Data 0.000 (0.070)	Loss 0.4677 (0.6510)	Prec@1 60.000 (76.585)	Prec@2 100.000 (90.732)
+Epoch: [38][60/73], lr: 0.00001	Time 2.184 (1.279)	Data 0.000 (0.047)	Loss 0.3851 (0.6524)	Prec@1 100.000 (76.066)	Prec@2 100.000 (91.475)
+No BN layer Freezing.
+Test: [0/56]	Time 1.909 (1.909)	Loss 0.1943 (0.1943)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.577 (0.523)	Loss 1.0316 (0.5941)	Prec@1 80.000 (80.000)	Prec@2 100.000 (94.286)
+Test: [40/56]	Time 0.432 (0.499)	Loss 0.3421 (0.7065)	Prec@1 100.000 (74.146)	Prec@2 100.000 (92.683)
+Testing Results: Prec@1 64.727 Prec@5 89.455 Loss 0.95639
+No BN layer Freezing.
+Epoch: [39][0/73], lr: 0.00001	Time 4.516 (4.516)	Data 3.136 (3.136)	Loss 0.8136 (0.8136)	Prec@1 60.000 (60.000)	Prec@2 80.000 (80.000)
+Epoch: [39][20/73], lr: 0.00001	Time 2.138 (1.386)	Data 0.000 (0.150)	Loss 1.0764 (0.7480)	Prec@1 80.000 (73.333)	Prec@2 80.000 (85.714)
+Epoch: [39][40/73], lr: 0.00001	Time 2.144 (1.314)	Data 0.000 (0.077)	Loss 0.1567 (0.7205)	Prec@1 100.000 (75.610)	Prec@2 100.000 (88.780)
+Epoch: [39][60/73], lr: 0.00001	Time 2.244 (1.288)	Data 0.000 (0.052)	Loss 1.0748 (0.6595)	Prec@1 80.000 (78.033)	Prec@2 100.000 (90.164)
+No BN layer Freezing.
+Test: [0/56]	Time 2.015 (2.015)	Loss 0.2676 (0.2676)	Prec@1 100.000 (100.000)	Prec@2 100.000 (100.000)
+Test: [20/56]	Time 0.412 (0.547)	Loss 1.0584 (0.6104)	Prec@1 60.000 (76.190)	Prec@2 100.000 (98.095)
+Test: [40/56]	Time 0.383 (0.482)	Loss 0.3972 (0.7002)	Prec@1 100.000 (71.707)	Prec@2 100.000 (94.634)
+Testing Results: Prec@1 61.818 Prec@5 89.455 Loss 0.96965
